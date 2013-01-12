@@ -44,7 +44,8 @@ $(document).ready(function() {
 		">": "─╤╦︻",
 		STUFF: "ȘĦİ†"
 	};
-	$("[type=text]").keyup(function() {
+	var ignore = ["password","pass","passwd"];
+	$("[type=text],textarea").keyup(function() {
 		var pretrap = $(this).val().split(" ");
 		var trap = $.map(pretrap, function(value) {
 			value = value.toUpperCase();
