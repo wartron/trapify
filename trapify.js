@@ -1,5 +1,5 @@
 
-
+var Trapify = true; //₲ⱢØƁ∆Ɫ ₣Ɫ∆₲ ₮Ø ₮ṲЯИ Ø₣₣ ỊИ ϾØИϨØⱢЄ
 $(document).ready(function() {
 	var trap_maps = {
 		A: "∆",
@@ -44,10 +44,10 @@ $(document).ready(function() {
 		">": "─╤╦︻",
 		STUFF: "ȘĦİ†"
 	};
-	var ignore = ["password","pass","passwd","p","u","user","email","username"];
+	var ignore = ["u","user","email","username","session[username_or_email]","recaptcha_response_field"];
 	$("[type=text],textarea").keyup(function() {
 		var me = $(this);
-		if($.inArray(me.attr("name"), ignore) < 0) {
+		if(Trapify && $.inArray(me.attr("name"), ignore) < 0) {
 			var pretrap = me.val().split(" ");
 			var trap = $.map(pretrap, function(value) {
 				value = value.toUpperCase();
