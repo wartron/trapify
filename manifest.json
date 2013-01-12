@@ -1,0 +1,15 @@
+{
+  "name": "Trapify",
+  "version": "0.1",
+  "permissions": [
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["jquery-1.8.3.min.js", "trapify.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "manifest_version": 2
+}
