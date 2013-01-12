@@ -44,21 +44,23 @@ $(document).ready(function() {
 		">": "─╤╦︻",
 		STUFF: "ȘĦİ†"
 	};
-	var ignore = ["password","pass","passwd"];
+	var ignore = ["password","pass","passwd","p","u","user","email","username"];
 	$("[type=text],textarea").keyup(function() {
-		var pretrap = $(this).val().split(" ");
-		var trap = $.map(pretrap, function(value) {
-			value = value.toUpperCase();
-			var trap_val = trap_maps[value];
-			if(!trap_val) {
-				trap_val = $.map(value, function(v) {
-					return trap_maps[v] ? trap_maps[v] : v
-				}).join("")
-			}
-			return trap_val
-		}).join(" ");
-		$(this).val(trap);
-
+		var me = $(this);
+		if($.inArray(me.attr("name"), ignore) < 0) {
+			var pretrap = me.val().split(" ");
+			var trap = $.map(pretrap, function(value) {
+				value = value.toUpperCase();
+				var trap_val = trap_maps[value];
+				if(!trap_val) {
+					trap_val = $.map(value, function(v) {
+						return trap_maps[v] ? trap_maps[v] : v
+					}).join("")
+				}
+				return trap_val
+			}).join(" ");
+			me.val(trap);
+		}
 		return false
 	});
 
